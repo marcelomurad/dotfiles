@@ -1,0 +1,3 @@
+#!/bin/bash
+# Are we in a git repo?
+git rev-parse HEAD &> /dev/null

@@ -1,0 +1,10 @@
+#!/bin/bash
+# Return the path relative to the current git repo's root or PWD
+if git_repo; then
+    REL=$(git rev-parse --show-prefix)
+    REL="${REL%/}"
+    LOC="${PWD%/$REL}"
+    echo "${LOC/*\/}${REL:+/$REL}"
+else
+    echo $PWD|sed s#$HOME#~#g
+fi

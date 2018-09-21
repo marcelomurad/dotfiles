@@ -1,0 +1,8 @@
+#!/bin/bash
+# Returns the name of the current HEAD (usually a branch)
+# Will return named rev if available (i.e. "master~1")
+if git_repo; then
+    BR=$(git symbolic-ref HEAD 2> /dev/null || git name-rev --name-only HEAD  2> /dev/null || echo 'no branch')
+    BR=${BR#refs/heads/}
+    echo "$BR:"
+fi
